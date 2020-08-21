@@ -14,5 +14,5 @@ Write a working automation script that will do:
 To run:
 On the command line, make sure you are in the ting_test folder
 Execute this to make sure chromedriver PATH is correct:
-export PATH=/Users/hanliemusic/chromedriver:$PATH
-Then run cucumber to execute the test. 
+export PATH=/Users/hanliemusic/geckodriver:/Users/hanliemusic/chromedriver:$PATH
+Then run cucumber -p firefox or cucumber -p chrome to execute the test. 
