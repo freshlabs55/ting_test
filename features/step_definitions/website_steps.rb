@@ -55,7 +55,10 @@ end
 Given(/^We find the sign up-activate button/) do
   waitbutton = Selenium::WebDriver::Wait.new(:timeout => 5)  #seconds
   begin
-    elemendbutton = waitbutton.until {driver.find_element(:class, 'navLinkActivate')}
+    elementbutton = waitbutton.until {driver.find_element(:class, 'navLinkActivate')}
+    if (elementbutton == nil)
+      print "Sign Up/Activate Button not found"
+    end
   end
 end
 
