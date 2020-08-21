@@ -13,8 +13,13 @@ require "selenium-webdriver"
 # variable for our URL
 url="https://ting.com/"
 
-# driver variable for chrome webdriver
-driver = Selenium::WebDriver.for :chrome
+# Parameter from cucumber.yml for browser
+browser = ENV['BROWSER_TYPE']
+if (browser == "firefox")
+  driver = Selenium::WebDriver.for :firefox
+elsif (browser == "chrome")
+  driver = Selenium::WebDriver.for :chrome
+end
 
 # Navigate to the home page
 Given(/^We navigate to the ting.com website/) do

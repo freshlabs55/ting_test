@@ -1,0 +1,2 @@
+firefox: BROWSER_TYPE=firefox
+chrome: BROWSER_TYPE=chrome
