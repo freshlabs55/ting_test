@@ -34,10 +34,14 @@ Then(/^We print the content of the testimonials/) do
   waitslide = Selenium::WebDriver::Wait.new(:timeout => 5)  #seconds
   begin
     elementslide = waitslide.until {driver.find_element(:class, 'slideTrack')}
-    elements = waitslide.until {driver.find_elements(:class, 'regularQuote')}
-    elements.length.times do |i|
-      print "Testimonial #{i + 1} #{elements[i].text} \n"
-      i = i + 1
+    if !(elementslide == nil)
+      elements = waitslide.until {driver.find_elements(:class, 'regularQuote')}
+      elements.length.times do |i|
+        print "Testimonial #{i + 1} #{elements[i].text} \n"
+        i = i + 1
+      end
+    else
+      print "No testimonials found"
     end
   end
 end
@@ -61,8 +65,12 @@ end
 Then(/^We print the page title of the new page/) do
   waitsection = Selenium::WebDriver::Wait.new(:timeout => 5)  #seconds
   begin
-    section = waitsection.until {driver.find_element(:class, 'accountLoginContainer')}
-    print "Page Title: #{section.text[0..16]}"
+    section = waitsection.until {driver.find_element(:css, 'h1')}
+    if !(section == nil)
+      print "Page Title: #{section.text}"
+    else
+      print "Page Title not found"
+    end
   ensure
     driver.quit
   end
